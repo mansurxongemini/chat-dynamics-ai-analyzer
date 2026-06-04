@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Suhbat Psixologik Tahlili — Mansurxon &amp; Nilufar</title>
+<style>
+  :root{
+    --bg:#0e1015;
+    --bg2:#161a23;
+    --card:#1c212e;
+    --card2:#232a3a;
+    --line:#2c3445;
+    --txt:#e8ecf5;
+    --muted:#9aa6bd;
+    --man:#38bdf8;       /* Mansurxon - moviy */
+    --man-dim:#1e3a4d;
+    --nil:#fb7185;       /* Nilufar - marjon/pushti */
+    --nil-dim:#4d2330;
+    --gold:#f5c451;
+    --green:#34d399;
+    --purple:#a78bfa;
+    --shadow:0 10px 40px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Segoe UI',-apple-system,Roboto,'Helvetica Neue',Arial,sans-serif;
+    background:radial-gradient(1200px 600px at 80% -10%,#1b2233 0,var(--bg) 55%);
+    color:var(--txt);line-height:1.6;-webkit-font-smoothing:antialiased;
+    padding-bottom:60px;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+  /* HEADER */
+  header.hero{
+    text-align:center;padding:70px 20px 50px;position:relative;
+    background:linear-gradient(180deg,rgba(167,139,250,.10),transparent);
+    border-bottom:1px solid var(--line);
+  }
+  .badge{display:inline-block;font-size:12px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--gold);border:1px solid rgba(245,196,81,.35);padding:6px 16px;border-radius:30px;margin-bottom:22px}
+  header.hero h1{font-size:clamp(28px,5vw,46px);font-weight:800;letter-spacing:-.5px;
+    background:linear-gradient(120deg,#fff,#9aa6bd);-webkit-background-clip:text;background-clip:text;color:transparent}
+  header.hero p.sub{color:var(--muted);font-size:17px;margin-top:14px;max-width:640px;margin-left:auto;margin-right:auto}
+  .people{display:flex;justify-content:center;gap:14px;margin-top:34px;flex-wrap:wrap}
+  .person{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);
+    border-radius:16px;padding:14px 22px;min-width:210px}
+  .avatar{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:18px;color:#0e1015}
+  .av-man{background:linear-gradient(135deg,#38bdf8,#0ea5e9)}
+  .av-nil{background:linear-gradient(135deg,#fb7185,#f43f5e)}
+  .person .nm{text-align:left}
+  .person .nm b{display:block;font-size:15px}
+  .person .nm span{font-size:12px;color:var(--muted)}
+  .meta-row{display:flex;justify-content:center;gap:34px;margin-top:34px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+  .meta-row b{color:var(--txt);font-size:20px;display:block}
+
+  /* SECTION */
+  section{margin-top:54px}
+  .sec-head{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+  .sec-num{width:42px;height:42px;flex:none;border-radius:12px;display:grid;place-items:center;font-weight:800;
+    background:var(--card2);border:1px solid var(--line);color:var(--gold)}
+  .sec-head h2{font-size:24px;font-weight:700}
+  .sec-head p{color:var(--muted);font-size:14px;margin-top:2px}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:var(--shadow)}
+  .card + .card{margin-top:18px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  @media(max-width:760px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+
+  /* STAT CARDS */
+  .stat{background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center}
+  .stat .big{font-size:34px;font-weight:800;letter-spacing:-1px}
+  .stat .lbl{font-size:13px;color:var(--muted);margin-top:4px}
+  .stat .sm{font-size:12px;margin-top:8px;color:var(--muted)}
+
+  /* BAR COMPARISON */
+  .cmp{margin:18px 0}
+  .cmp .row-lbl{display:flex;justify-content:space-between;font-size:14px;margin-bottom:7px}
+  .cmp .row-lbl .t{color:var(--muted)}
+  .bars{display:flex;height:30px;border-radius:8px;overflow:hidden;background:#11141c}
+  .bars .b{display:flex;align-items:center;font-size:12.5px;font-weight:700;color:#06121c;padding:0 10px;white-space:nowrap;transition:width .8s ease}
+  .b-man{background:linear-gradient(90deg,#0ea5e9,#38bdf8);justify-content:flex-start}
+  .b-nil{background:linear-gradient(90deg,#fb7185,#f43f5e);justify-content:flex-end;color:#2a0a12}
+  .legend{display:flex;gap:20px;justify-content:center;margin-top:6px;font-size:13px;color:var(--muted)}
+  .dot{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:6px;vertical-align:middle}
+  .d-man{background:#38bdf8}.d-nil{background:#fb7185}
+
+  /* IRAC */
+  .irac{border-left:4px solid var(--gold);padding-left:20px}
+  .irac h3{font-size:19px;display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .irac .tag{font-size:11px;font-weight:800;letter-spacing:1px;padding:3px 9px;border-radius:6px;background:rgba(245,196,81,.15);color:var(--gold)}
+
+  /* QUOTE */
+  .quote{border-radius:14px;padding:16px 18px;margin:12px 0;position:relative;font-size:15px}
+  .q-nil{background:linear-gradient(90deg,rgba(251,113,133,.10),transparent);border:1px solid rgba(251,113,133,.3)}
+  .q-man{background:linear-gradient(90deg,rgba(56,189,248,.10),transparent);border:1px solid rgba(56,189,248,.3)}
+  .quote .who{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px}
+  .q-nil .who{color:var(--nil)}.q-man .who{color:var(--man)}
+  .quote .interp{font-size:13px;color:var(--muted);margin-top:8px;border-top:1px dashed var(--line);padding-top:8px}
+
+  /* TIMELINE (daily) */
+  .timeline{display:flex;align-items:flex-end;gap:10px;height:200px;margin-top:18px;padding:0 4px}
+  .tl-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
+  .tl-bar{width:100%;max-width:46px;border-radius:8px 8px 0 0;background:linear-gradient(180deg,var(--purple),#6d4ed6);
+    display:flex;align-items:flex-start;justify-content:center;color:#fff;font-size:12px;font-weight:700;padding-top:4px;transition:height .8s}
+  .tl-day{font-size:12px;color:var(--muted);text-align:center}
+
+  /* HOUR HEATMAP */
+  .heat{display:grid;grid-template-columns:repeat(12,1fr);gap:5px;margin-top:16px}
+  .hc{aspect-ratio:1;border-radius:6px;display:grid;place-items:center;font-size:10px;color:#cdd6ea;border:1px solid var(--line)}
+  .hc small{font-size:9px;color:var(--muted);position:relative;top:0}
+  .heat-lbl{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:8px}
+
+  /* DONUT */
+  .donut-wrap{display:flex;align-items:center;gap:26px;flex-wrap:wrap;justify-content:center}
+  .donut{position:relative;width:180px;height:180px;border-radius:50%}
+  .donut .hole{position:absolute;inset:34px;background:var(--card);border-radius:50%;display:grid;place-items:center;text-align:center}
+  .donut .hole b{font-size:22px;display:block}
+  .donut .hole span{font-size:11px;color:var(--muted)}
+
+  /* GAUGE / asymmetry */
+  .gauge{height:18px;border-radius:10px;background:linear-gradient(90deg,#38bdf8,#a78bfa,#fb7185);position:relative;margin:30px 0 10px}
+  .gauge .needle{position:absolute;top:-8px;width:4px;height:34px;background:#fff;border-radius:3px;box-shadow:0 0 10px rgba(255,255,255,.6)}
+  .gauge-lbl{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+
+  /* TInterpretation chips */
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .chip{font-size:12.5px;padding:6px 12px;border-radius:20px;border:1px solid var(--line);background:var(--card2);color:var(--muted)}
+  .chip b{color:var(--txt)}
+
+  ul.clean{list-style:none;margin-top:10px}
+  ul.clean li{padding:8px 0 8px 26px;position:relative;border-bottom:1px solid var(--line)}
+  ul.clean li:last-child{border-bottom:none}
+  ul.clean li:before{content:"";position:absolute;left:4px;top:16px;width:8px;height:8px;border-radius:50%;background:var(--gold)}
+
+  .reco{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-bottom:1px solid var(--line)}
+  .reco:last-child{border-bottom:none}
+  .reco .ic{width:34px;height:34px;flex:none;border-radius:10px;background:rgba(52,211,153,.14);color:var(--green);display:grid;place-items:center;font-weight:800}
+
+  .disc{margin-top:50px;background:rgba(245,196,81,.07);border:1px solid rgba(245,196,81,.3);border-radius:16px;padding:20px;font-size:13.5px;color:#d8c89a}
+  footer{text-align:center;color:var(--muted);font-size:12.5px;margin-top:40px;padding-top:20px;border-top:1px solid var(--line)}
+  .phase{display:flex;gap:14px;margin-bottom:6px}
+  .phase .pdate{flex:none;width:92px;font-size:12px;color:var(--gold);font-weight:700;padding-top:2px}
+  .phase .pbody{border-left:2px solid var(--line);padding:0 0 18px 18px;position:relative}
+  .phase .pbody:before{content:"";position:absolute;left:-7px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--purple);border:3px solid var(--bg)}
+  .phase .pbody h4{font-size:15px;margin-bottom:4px}
+  .phase .pbody p{font-size:13.5px;color:var(--muted)}
+  .tagline{font-size:12px;color:var(--muted);font-style:italic}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">Ijtimoiy-psixologik xulq-atvor tahlili</span>
+    <h1>Suhbat dinamikasi tahlili</h1>
+    <p class="sub">Telegram shaxsiy yozishmasidagi muloqot uslubi, emotsional sarmoya va munosabatlar dinamikasining matnli paternlar asosidagi xolis tahlili</p>
+
+    <div class="people">
+      <div class="person">
+        <div class="avatar av-man">M</div>
+        <div class="nm"><b>Mansurxon</b><span>Ishtirokchi A · TDYU talabasi</span></div>
+      </div>
+      <div class="person">
+        <div class="avatar av-nil">N</div>
+        <div class="nm"><b>Nilufar</b><span>Ishtirokchi B · TDYU talabasi</span></div>
+      </div>
+    </div>
+
+    <div class="meta-row">
+      <div><b>302</b> jami xabar</div>
+      <div><b>8 kun</b> 27-may – 4-iyun 2026</div>
+      <div><b>3 739</b> so'z</div>
+      <div><b>70</b> reaksiya</div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- 0. UMUMIY KO'RSATKICHLAR -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">01</div>
+      <div><h2>Umumiy ko'rsatkichlar</h2><p>Suhbatning miqdoriy "barmoq izi"</p></div>
+    </div>
+    <div class="grid4">
+      <div class="stat"><div class="big" style="color:var(--nil)">54%</div><div class="lbl">xabarlar Nilufardan</div><div class="sm">164 ta · Mansurxon: 138 ta</div></div>
+      <div class="stat"><div class="big" style="color:var(--nil)">2.4×</div><div class="lbl">ko'proq emoji (matnda)</div><div class="sm">N: 1.80/xabar · M: 0.74/xabar</div></div>
+      <div class="stat"><div class="big" style="color:var(--man)">2.7×</div><div class="lbl">ko'proq reaksiya bergan</div><div class="sm">M: 51 ta · N: 19 ta</div></div>
+      <div class="stat"><div class="big" style="color:var(--gold)">19:00</div><div class="lbl">eng faol soat</div><div class="sm">cho'qqi: kechki 19–22</div></div>
+    </div>
+  </section>
+
+  <!-- 2. HISSIY USLUB -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">02</div>
+      <div><h2>Hissiy uslub va sarmoya nomutanosibligi</h2><p>Kim ko'proq his-tuyg'u "investitsiya" qiladi?</p></div>
+    </div>
+    <div class="card">
+      <div class="cmp">
+        <div class="row-lbl"><span class="t">Xabarlar soni</span></div>
+        <div class="bars"><div class="b b-man" style="width:45.7%">138</div><div class="b b-nil" style="width:54.3%">164</div></div>
+      </div>
+      <div class="cmp">
+        <div class="row-lbl"><span class="t">So'zlar hajmi</span></div>
+        <div class="bars"><div class="b b-man" style="width:48.1%">1799</div><div class="b b-nil" style="width:51.9%">1940</div></div>
+      </div>
+      <div class="cmp">
+        <div class="row-lbl"><span class="t">Matn ichidagi emojilar</span></div>
+        <div class="bars"><div class="b b-man" style="width:25.7%">102</div><div class="b b-nil" style="width:74.3%">295</div></div>
+      </div>
+      <div class="cmp">
+        <div class="row-lbl"><span class="t">Mehr/yurak emojilari (😍🫠❤)</span></div>
+        <div class="bars"><div class="b b-man" style="width:3%;background:#2c3445;color:#9aa6bd">0</div><div class="b b-nil" style="width:97%">38</div></div>
+      </div>
+      <div class="cmp">
+        <div class="row-lbl"><span class="t">Siniq yurak 💔 emojisi</span></div>
+        <div class="bars"><div class="b b-man" style="width:3%;background:#2c3445;color:#9aa6bd">0</div><div class="b b-nil" style="width:97%">62</div></div>
+      </div>
+      <div class="cmp">
+        <div class="row-lbl"><span class="t">Hayrat/havas ifodalari ("qoyil", "havasim", "takooy")</span></div>
+        <div class="bars"><div class="b b-man" style="width:15%">6</div><div class="b b-nil" style="width:85%">34</div></div>
+      </div>
+      <div class="legend"><span><i class="dot d-man"></i>Mansurxon</span><span><i class="dot d-nil"></i>Nilufar</span></div>
+    </div>
+
+    <div class="grid2" style="margin-top:18px">
+      <div class="card">
+        <h3 style="font-size:16px;margin-bottom:6px">Mansurxonning emoji "lug'ati"</h3>
+        <p class="tagline">Hazil va iliqlik, ammo romantik belgilarsiz</p>
+        <div class="chips">
+          <span class="chip">😁 <b>67</b></span><span class="chip">😂 <b>24</b></span>
+          <span class="chip">😅 <b>3</b></span><span class="chip">👍 <b>3</b></span><span class="chip">🔥 <b>2</b></span>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-top:12px">Asosan kulgi va vaziyatni yengillashtiruvchi belgilar. Hissiy "issiq" emojilar (yurak, ko'z yosh) deyarli yo'q.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:16px;margin-bottom:6px">Nilufarning emoji "lug'ati"</h3>
+        <p class="tagline">Kuchli affektiv (his-hayajonli) ranglar</p>
+        <div class="chips">
+          <span class="chip">💔 <b>62</b></span><span class="chip">😂 <b>48</b></span>
+          <span class="chip">🫠 <b>24</b></span><span class="chip">😍 <b>12</b></span><span class="chip">😲 <b>12</b></span><span class="chip">🥲 <b>10</b></span>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-top:12px">Eriydigan yuz (🫠), oshiq ko'zlar (😍), siniq yurak (💔) — yuqori emotsional ochiqlik va intensivlik markeri.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. INITSIATIVA & JAVOB -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">03</div>
+      <div><h2>Tashabbus va javob ritmi</h2><p>Suhbatni kim "tortib turadi"?</p></div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <h3 style="font-size:16px;margin-bottom:14px">Pauzadan keyin suhbatni boshlash <span class="tagline">(≥3 soat sukunatdan so'ng)</span></h3>
+        <div class="cmp">
+          <div class="bars" style="height:36px"><div class="b b-man" style="width:37.5%">6</div><div class="b b-nil" style="width:62.5%">10</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-top:10px">Nilufar suhbatni qayta boshlashga ~1.7 baravar ko'proq tashabbus ko'rsatadi — yaqinlikni saqlash istagining belgisi.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-size:16px;margin-bottom:14px">Offline uchrashuvga ishora</h3>
+        <div class="cmp">
+          <div class="bars" style="height:36px"><div class="b b-man" style="width:17%">2</div><div class="b b-nil" style="width:83%">10</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-top:10px">"Ko'rish", "mehmon qilish", "sushiga olib borish" kabi takliflar asosan Nilufardan keladi.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <h3 style="font-size:16px;margin-bottom:8px">Javob tezligi (mediana)</h3>
+      <div class="grid2" style="gap:24px;margin-top:8px">
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:14px"><span style="color:var(--man)">Mansurxon</span><b>~15 daqiqa</b></div>
+          <div class="bars" style="margin-top:6px"><div class="b b-man" style="width:23%">15 daq</div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:14px"><span style="color:var(--nil)">Nilufar</span><b>~50 daqiqa</b></div>
+          <div class="bars" style="margin-top:6px"><div class="b b-nil" style="width:75%">50 daq</div></div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:14px">
+        <b style="color:var(--txt)">Diqqatga sazovor nuance:</b> Mansurxon ko'pincha <b>tezroq</b> javob beradi (mediana 15 daq), lekin xabarlari hissiy jihatdan <b>vazminroq</b>.
+        Nilufar javobni biroz kechiktiradi, ammo javob kelganda <b>hajmli va his-tuyg'uga boy</b> bo'ladi. Ya'ni: tezlik ≠ hissiy sarmoya.
+      </p>
+    </div>
+  </section>
+
+  <!-- 4. REAKSIYALAR -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">04</div>
+      <div><h2>Reaksiyalar tahlili</h2><p>So'zsiz e'tibor: kim kimning xabariga "bosadi"?</p></div>
+    </div>
+    <div class="card">
+      <div class="donut-wrap">
+        <div class="donut" style="background:conic-gradient(var(--man) 0 72.8%, var(--nil) 72.8% 100%)">
+          <div class="hole"><b>70</b><span>jami reaksiya</span></div>
+        </div>
+        <div style="flex:1;min-width:260px">
+          <div class="cmp">
+            <div class="row-lbl"><span class="t">Mansurxon bergan reaksiyalar</span><span style="color:var(--man)"><b>51</b></span></div>
+            <div class="bars"><div class="b b-man" style="width:73%">😁27 · 🔥12 · 🤣7 · ❤️‍🔥2</div></div>
+          </div>
+          <div class="cmp">
+            <div class="row-lbl"><span class="t">Nilufar bergan reaksiyalar</span><span style="color:var(--nil)"><b>19</b></span></div>
+            <div class="bars"><div class="b b-nil" style="width:27%">😁11 · 🔥4 · 💔3</div></div>
+          </div>
+          <p style="font-size:13.5px;color:var(--muted);margin-top:10px">
+            Bu yerda yo'nalish <b style="color:var(--man)">teskari</b>: aynan <b>Mansurxon</b> Nilufarning xabarlariga sezilarli darajada ko'proq reaksiya bildiradi (51 vs 19).
+            U hatto <b>ikki marta ❤️‍🔥</b> ("yonayotgan yurak") reaksiyasini ham qo'ygan. Ya'ni e'tibor <b>bir tomonlama emas</b> — Mansurxon ham faol qiziqish bildiradi, faqat buni <b>so'z bilan emas, belgilar va harakatlar bilan</b> ifodalaydi.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. FAOLLIK DINAMIKASI -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">05</div>
+      <div><h2>Faollik dinamikasi</h2><p>Kunlar bo'yicha xabarlar oqimi</p></div>
+    </div>
+    <div class="card">
+      <div class="timeline">
+        <div class="tl-col"><div class="tl-bar" style="height:51%">41</div><div class="tl-day">27-may</div></div>
+        <div class="tl-col"><div class="tl-bar" style="height:15%">12</div><div class="tl-day">28-may</div></div>
+        <div class="tl-col"><div class="tl-bar" style="height:19%">15</div><div class="tl-day">29-may</div></div>
+        <div class="tl-col"><div class="tl-bar" style="height:75%">60</div><div class="tl-day">30-may</div></div>
+        <div class="tl-col"><div class="tl-bar" style="height:100%">80</div><div class="tl-day">31-may</div></div>
+        <div class="tl-col"><div class="tl-bar" style="height:3%;background:#2c3445">0</div><div class="tl-day">1-iyun</div></div>
+        <div class="tl-col"><div class="tl-bar" style="height:18%">14</div><div class="tl-day">2-iyun</div></div>
+        <div class="tl-col"><div class="tl-bar" style="height:76%">61</div><div class="tl-day">3-iyun</div></div>
+        <div class="tl-col"><div class="tl-bar" style="height:24%">19</div><div class="tl-day">4-iyun</div></div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin-top:16px">
+        Ikki aniq cho'qqi: <b>31-may</b> (80 xabar — otlar, kitoblar va falsafa haqida uzoq, chuqur suhbat) va <b>3-iyun</b> (61 xabar — imtihon, yengillik va yumshoq xayrlashuv kuni). <b>1-iyun</b> — to'liq sukunat.
+      </p>
+    </div>
+
+    <div class="card" style="margin-top:18px">
+      <h3 style="font-size:16px;margin-bottom:4px">Sutkalik faollik (xabarlar soni bo'yicha)</h3>
+      <div class="heat" id="heat"></div>
+      <div class="heat-lbl"><span>00:00</span><span>06:00</span><span>12:00</span><span>18:00</span><span>23:00</span></div>
+      <p style="font-size:13px;color:var(--muted);margin-top:14px">
+        Muloqot asosan <b>kech tushdan – yarim tungacha</b> (19:00–00:00) jamlangan. Yarim tundagi (00:00) 26 ta xabar — kech tungacha cho'zilgan, "uxlagim kelmaydi" tipidagi suhbatlarga ishora. Bu — ikki tomon uchun ham bu muloqot kunning <b>ustuvor</b> qismi bo'lganini ko'rsatadi.
+      </p>
+    </div>
+  </section>
+
+  <!-- 6. SUHBAT YO'LI / BOSHIDAN OXIRIGA -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">06</div>
+      <div><h2>Suhbatning hissiy yo'li: boshidan oxirigacha</h2><p>Munosabatning 8 kunlik rivojlanish yoyi</p></div>
+    </div>
+    <div class="card">
+      <div class="phase"><div class="pdate">27-may</div><div class="pbody">
+        <h4>Boshlanish — bayram tabrigi</h4>
+        <p>Mansurxon hayit tabrigi bilan boshlaydi. Nilufar darhol iliq javob qaytaradi va birinchi xabaridayoq uning <b>kayfiyatini so'raydi</b> ("kecha kayfiyatiz yo'q edi, hammasi joyidami"). Boshidanoq g'amxo'rlik va e'tibor signali bor.</p>
+      </div></div>
+      <div class="phase"><div class="pdate">27–29-may</div><div class="pbody">
+        <h4>Yaqinlashuv — "otlar dunyosi" ochiladi</h4>
+        <p>Mansurxon o'z hayotini (Samarqanddagi ferma, otlar, chavandozlik) ulasha boshlaydi, videolar yuboradi. Nilufar katta qiziqish va hayrat bildiradi: "havasim kelyapti", "intiqlik bilan kutaman". Umumiy qiziqish — yaqinlik ko'prigiga aylanadi.</p>
+      </div></div>
+      <div class="phase"><div class="pdate">30–31-may</div><div class="pbody">
+        <h4>Cho'qqi — intellektual yaqinlik va ideallashtirish</h4>
+        <p>Kitoblar, falsafa, psixologiya muhokama qilinadi (Kahneman, Cialdini, Frankl). Suhbat eng intensiv nuqtaga chiqadi (80 xabar). Nilufar Mansurxonni baland baholaydi: <i>"miyangizdagi har bitta neyron bilimga to'lgan", "dunyoning 8-mo'jizasimisiz?"</i>. Mansurxon esa buni <b>yumshoq qaytaradi</b>: "meni unaqa mukammallashtirib yubormang".</p>
+      </div></div>
+      <div class="phase"><div class="pdate">31-may – 2-iyun</div><div class="pbody">
+        <h4>Zaiflikni ochish — oshpazlik epizodi</h4>
+        <p>Nilufar ovqat kuydirgani va yig'lagani haqida ochiq aytadi — bu <b>zaiflikni ishonib ochish</b> (vulnerability) lahzasi. Mansurxon g'amxo'rlik bilan batafsil retsept beradi va "bunday narsaga yig'lamang" deb dalda beradi. Eng yaqin, samimiy nuqtalardan biri.</p>
+      </div></div>
+      <div class="phase"><div class="pdate">3-iyun</div><div class="pbody">
+        <h4>Burilish — yumshoq xayrlashuv</h4>
+        <p>Mansurxon Samarqandga qaytadi. Nilufar uchrashmoqchi bo'ladi, lekin jur'at qilolmaydi (<i>"sizni mehmon qilib... indamadim"</i>). Mansurxon yopuvchi ohangdagi xabar yozadi: <i>"yana ko'rishamizmi yo'qmi bilmadim... yaqinroq do'st bo'lganingiz uchun rahmat"</i>. Nilufar imtihondan keyin "vahshe yengil tortdim" deydi.</p>
+      </div></div>
+      <div class="phase"><div class="pdate">4-iyun</div><div class="pbody">
+        <h4>Yakun — yumshoq so'nish</h4>
+        <p>Yana bir necha ot videosi va qisqa, iliq almashinuvlar. Suhbat keskin uzilmaydi, balki <b>tabiiy ravishda sustlashadi</b>. Hissiy intensivlik pasayadi, ammo o'zaro hurmat saqlanadi.</p>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- 7. IRAC -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">07</div>
+      <div><h2>Psixologik xulosa (IRAC metodologiyasi)</h2><p>Issue · Rule · Application · Conclusion</p></div>
+    </div>
+
+    <div class="card">
+      <div class="irac" style="border-color:var(--man)">
+        <h3><span class="tag" style="background:rgba(56,189,248,.15);color:var(--man)">I — ISSUE</span> Asosiy dinamika</h3>
+        <p>Bu — intellektual jihatdan boy, iliq <b>do'stona muloqot</b>, ammo unda <b>emotsional sarmoyaning nomutanosibligi</b> kuzatiladi. Platonik do'stlik bilan bir tomonning yuqori darajadagi <b>romantik hayrati/idealizatsiyasi</b> yonma-yon mavjud. Ya'ni: bir kishi munosabatga his-tuyg'u jihatidan ko'proq "tikadi".</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="irac" style="border-color:var(--purple)">
+        <h3><span class="tag" style="background:rgba(167,139,250,.15);color:var(--purple)">R — RULE</span> Psixologik patern</h3>
+        <p>Bog'lanish (attachment) nazariyasi nuqtai nazaridan, bu ko'rinish <b>"tashvishli–intiluvchi" ↔ "vazmin–saqlovchi"</b> tsikliga yaqin keladi:</p>
+        <div class="chips">
+          <span class="chip" style="border-color:var(--nil)"><b style="color:var(--nil)">Nilufar:</b> intiluvchi tendentsiya — tashabbus, ideallashtirish, yaqinlik izlash</span>
+          <span class="chip" style="border-color:var(--man)"><b style="color:var(--man)">Mansurxon:</b> vazmin–vositali tendentsiya — harakat orqali e'tibor, so'zda chegara</span>
+        </div>
+        <p style="margin-top:12px"><b>Buzilgan parametr:</b> hissiy ifodadagi <b>simmetriya</b> (Razdel 2: "симметрия вложений"). Reaksiya va harakat darajasida esa muloqot ancha <b>o'zaro</b> (Mansurxon faol).</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="irac" style="border-color:var(--gold)">
+        <h3><span class="tag">A — APPLICATION</span> Dalillar bazasi</h3>
+        <ul class="clean">
+          <li><b>Fakt 1.</b> Hissiy emojilar: Nilufar 295 ta (yurak 38, 💔 62) — Mansurxon 102 ta (yurak 0, 💔 0). <span class="tagline">Hissiy ochiqlikda keskin farq.</span></li>
+          <li><b>Fakt 2.</b> Hayrat/havas ifodalari: Nilufar 34 — Mansurxon 6. Ideallashtirish markeri.</li>
+          <li><b>Fakt 3.</b> Pauzadan keyin tashabbus: Nilufar 10 — Mansurxon 6. Offline uchrashuv taklifi: Nilufar 10 — Mansurxon 2.</li>
+          <li><b>Fakt 4.</b> Reaksiyalar (teskari yo'nalish): Mansurxon 51 ta beradi (shu jumladan ❤️‍🔥×2) — Nilufar 19 ta. <span class="tagline">Mansurxonning qiziqishi harakatda ko'rinadi.</span></li>
+          <li><b>Fakt 5 (iqtibos).</b> Mansurxonning chegarasi: <i>"Nilufar, meni unaqa mukammallashtirib yubormang 😁"</i> — idealizatsiyani yumshoq rad etish.</li>
+          <li><b>Fakt 6 (iqtibos).</b> Yopuvchi ohang: <i>"Yana ko'rishamizmi yo'qmi bilmadim... yaqinroq do'st bo'lganingiz uchun rahmat"</i> — masofani belgilash signali.</li>
+          <li><b>Fakt 7 (iqtibos).</b> Aytilmagan istak: <i>"...sizni mehmon qilib sushiga olib borib... indamadim"</i> — Nilufardagi tiyilgan yaqinlashuv istagi.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="irac" style="border-color:var(--green)">
+        <h3><span class="tag" style="background:rgba(52,211,153,.15);color:var(--green)">C — CONCLUSION</span> Xulosa va istiqbol</h3>
+        <p>Matnli paternlar <b>Nilufar tomonidan simpatiya/hayratning yuqori ehtimolini</b> ko'rsatadi: u munosabatga hissiy jihatdan ko'proq sarmoya kiritadi. Mansurxon esa iliqlik va e'tiborni <b>harakatlar bilan</b> (videolar ulashish, reaksiyalar, batafsil maslahat) qaytaradi, biroq <b>verbal-emotsional masofani saqlaydi</b> va suhbat oxirida muloqotni yumshoq yopuvchi tomonga yo'naltiradi.</p>
+
+        <div class="gauge"><div class="needle" style="left:68%"></div></div>
+        <div class="gauge-lbl"><span>Vazmin / saqlovchi (Mansurxon)</span><span>Intiluvchi / ochiq (Nilufar)</span></div>
+        <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:4px">Hissiy sarmoya muvozanati — markazdan Nilufar tomoniga og'gan</p>
+
+        <p style="margin-top:16px"><b>Ehtimoliy istiqbol:</b> agar kutilmalar ochiq aytilmasa, nomutanosiblik bir tomonda <b>hissiy charchoq yoki umidsizlik</b> xavfini tug'dirishi mumkin. Hozircha muloqot do'stona va hurmatli ohangda saqlanmoqda.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. TAVSIYALAR -->
+  <section>
+    <div class="sec-head">
+      <div class="sec-num">08</div>
+      <div><h2>Neytral, ekologik tavsiyalar</h2><p>Sog'lom muloqot uchun</p></div>
+    </div>
+    <div class="card">
+      <div class="reco"><div class="ic">1</div><div><b>Kutilmalarni ochiq ayting.</b><br><span style="color:var(--muted);font-size:14px">Muloqot formati va o'zaro kutilmalar haqida samimiy, bosim­siz suhbat noaniqlik va keyingi xafagarchilikni kamaytiradi.</span></div></div>
+      <div class="reco"><div class="ic">2</div><div><b>Shaxsiy chegaralarni hurmat qiling.</b><br><span style="color:var(--muted);font-size:14px">Har bir tomonning javob ritmi va hissiy uslubi har xil — buni "befarqlik" deb emas, tabiiy farq deb qabul qilish foydali.</span></div></div>
+      <div class="reco"><div class="ic">3</div><div><b>Idealizatsiyani muvozanatlash.</b><br><span style="color:var(--muted);font-size:14px">Boshqa odamni haddan tashqari ko'tarish o'z-o'zini kichraytirishga olib kelishi mumkin. O'zaro qadrlash teng asosda sog'lomroq bo'ladi.</span></div></div>
+      <div class="reco"><div class="ic">4</div><div><b>Harakat tilini ham "o'qing".</b><br><span style="color:var(--muted);font-size:14px">E'tibor faqat so'zda emas — ulashilgan videolar, reaksiyalar va tez javoblarda ham namoyon bo'ladi. Bu signallarni ham hisobga olish adolatli baho beradi.</span></div></div>
+    </div>
+  </section>
+
+  <div class="disc">
+    <b>⚠️ Eslatma (Diskleymer):</b> Ushbu tahlil faqat matnli paternlarga asoslangan bo'lib, professional psixologik xulosa emas. Bu yerda hech qanday klinik tashxis qo'yilmagan; barcha mulohazalar <b>ehtimollik</b> sifatida, faktlar emas, balki taxminlar tarzida bayon etilgan. Odamning ichki niyat va his-tuyg'ularini matndan yuz foiz aniqlikda bilib bo'lmaydi.
+  </div>
+
+  <footer>
+    Tahlil 302 ta xabar asosida avtomatik tarzda tayyorlandi · IRAC metodologiyasi · 27-may – 4-iyun 2026<br>
+    Manba: Telegram eksport (messages.html)
+  </footer>
+</div>
+
+<script>
+// Sutkalik issiqlik xaritasi (24 soat)
+var hours = {0:26,1:6,2:0,3:0,4:0,5:0,6:2,7:10,8:0,9:22,10:9,11:41,12:3,13:4,14:21,15:8,16:13,17:6,18:10,19:42,20:4,21:35,22:37,23:3};
+var max = 42;
+var heat = document.getElementById('heat');
+for (var h=0; h<24; h++){
+  var v = hours[h] || 0;
+  var ratio = v/max;
+  // moviy -> pushti gradient intensivlik bo'yicha
+  var bg = v===0 ? 'rgba(44,52,69,.35)' :
+           'rgba('+Math.round(56+ (251-56)*ratio)+','+Math.round(189-(189-113)*ratio)+','+Math.round(248-(248-133)*ratio)+','+(0.25+0.75*ratio)+')';
+  var cell = document.createElement('div');
+  cell.className='hc';
+  cell.style.background=bg;
+  cell.innerHTML = (h<10?'0'+h:h)+'<small>'+(v||'')+'</small>';
+  cell.title = (h<10?'0'+h:h)+':00 — '+v+' xabar';
+  heat.appendChild(cell);
+}
+</script>
+</body>
+</html>
